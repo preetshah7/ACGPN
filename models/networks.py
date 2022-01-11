@@ -1575,7 +1575,7 @@ class BoundedGridLocNet(nn.Module):
 
     def forward(self, x):
         batch_size = x.size(0)
-        points = F.tanh(self.cnn(x))
+        points = torch.tanh(self.cnn(x))
         coor = points.view(batch_size, -1, 2)
         # coor+=torch.randn(coor.shape).cuda()/10
         row = self.get_row(coor, 5)
